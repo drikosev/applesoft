@@ -73,7 +73,7 @@ scanners are cascaded only for programs coded in space optional form.
     3.2) The "AppleSoft_Scanner.htm" has the same content as the above in HTML format.
 
     -A variant of the AppleSoft II scanner that recognizes space separated keywords &
-    names and in a single pass. It contains the keywords and rules of the Preprocessor.
+    names in a single pass. It contains the keywords and the rules of the Preprocessor.
     3.3) The "AppleSoft_Scanner_Free.txt" contains the lexical rules of the free scanner.
     3.4) The "AppleSoft_Scanner_Free.htm" has the same content as the above in HTML.
 
@@ -105,8 +105,8 @@ scanners are cascaded only for programs coded in space optional form.
      handled by Semantic Actions. A returned real-literal-constant ie can be a literal, 
      not vice versa. Depending on the dialect, a lower 'e' or space may not be acceptable
      in a real number, in which case a READ statement would accept it only as a string. 
-    6.1) The "Data_Scanner.txt" contains the lexical rules used in Data statements. 
-    6.2) The "Data_Scanner.htm" has the same content as the above in HTML format.
+     6.1) The "Data_Scanner.txt" contains the lexical rules used in Data statements. 
+     6.2) The "Data_Scanner.htm" has the same content as the above in HTML format.
 
 
 
