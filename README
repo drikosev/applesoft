@@ -101,8 +101,8 @@ scanners are cascaded only for programs coded in space optional form.
 
  6) Data Scanner
     ------------
-    -It tokenizes scanned Data statements. It's called by the Data Parser. Spaces are
-     handled by Semantic Actions. A returned real-literal-constant ie can be a literal, 
+    -It tokenizes scanned Data statements. It's called by the Data Parser. Few spaces are
+     checked by Semantic Actions. A returned real-literal-constant ie can be a literal, 
      not vice versa. Depending on the dialect, a lower 'e' or space may not be acceptable
      in a real number, in which case a READ statement would accept it only as a string. 
      6.1) The "Data_Scanner.txt" contains the lexical rules used in Data statements. 
