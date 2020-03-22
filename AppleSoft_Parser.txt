@@ -1,9 +1,7 @@
 #disambiguate <expr>
 #disambiguate <print-expr>
 
-#sma <name>
 #sma <real-literal-constant>
-#sma OK
 
 <grm> ::= 
            <program-unit> 

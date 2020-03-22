@@ -64,7 +64,7 @@ exponent ::=
            { \t | \s | 0 .. 9 }... 
 
 <line-comment> ::= 
-           R E M [ <line-char> ... ] 
+           R [ { \t | \s }... ] E [ { \t | \s }... ] M [ <line-char> ... ] 
 
 <line-char> ::= 
            <ch> -= { \r | \n } 
