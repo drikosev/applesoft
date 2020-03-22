@@ -115,8 +115,10 @@ scanners are cascaded only for programs coded in space optional form.
 
     The command "bcheck" (binary) is an AppleSoft parser (front-end) that validates
     syntactically a Basic program according to the BNF rules of the AppleSoft_Parser.txt.
+
     It supports also the UK101 dialect, along with a modern variant (not space optional)
     that may parse several examples found at [*2] & [*3]. It can read only ASCII files. 
+    It prints diagnostics on a syntax error and on demand can print the scanned tokens.
 
     It can be installed on an Intel based Mac (minimum OS X 10.9), a Linux i386/x86_64
     system (minimum RedHat 9 but also ie on Ubuntu 14.04 i386), or Windows via Cygwin:
