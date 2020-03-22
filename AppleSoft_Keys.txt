@@ -1,0 +1,409 @@
+#ignore <spaces>
+
+#sma HIMEM
+#sma LOMEM
+
+token ::= 
+           ABS 
+     |     AND 
+     |     ASC 
+     |     AT 
+     |     ATN 
+     |     CALL 
+     |     <CHR$> 
+     |     CLEAR 
+     |     COLOR +: = 
+     |     CONT 
+     |     COS 
+     |     DATA 
+     |     DEF 
+     |     DEL 
+     |     DIM 
+     |     DRAW 
+     |     END 
+     |     EXP 
+     |     FLASH 
+     |     FN 
+     |     FOR 
+     |     FRE 
+     |     GET 
+     |     GOSUB 
+     |     GOTO 
+     |     GR 
+     |     HCOLOR +: = 
+     |     HGR 
+     |     HGR2 
+     |     HIMEM +: : 
+     |     HLIN 
+     |     HOME 
+     |     HPLOT 
+     |     HTAB 
+     |     IF 
+     |     <IN#> 
+     |     INPUT 
+     |     INT 
+     |     INVERSE 
+     |     <LEFT$> 
+     |     LEN 
+     |     LET 
+     |     LIST 
+     |     LOAD 
+     |     LOG 
+     |     LOMEM +: : 
+     |     <MID$> 
+     |     NEW 
+     |     NEXT 
+     |     NORMAL 
+     |     NOT 
+     |     NOTRACE 
+     |     ON 
+     |     ONERR 
+     |     OR 
+     |     PDL 
+     |     PEEK 
+     |     PLOT 
+     |     POKE 
+     |     POP 
+     |     POS 
+     |     PRINT 
+     |     <PR#> 
+     |     READ 
+     |     RECALL 
+     |     REM 
+     |     RESTORE 
+     |     RESUME 
+     |     RETURN 
+     |     <RIGHT$> 
+     |     RND 
+     |     ROT +: = 
+     |     RUN 
+     |     SAVE 
+     |     SCALE +: = 
+     |     SCRN +: ( 
+     |     SGN 
+     |     SHLOAD 
+     |     SIN 
+     |     SPC +: ( 
+     |     SPEED +: = 
+     |     SQR 
+     |     STEP 
+     |     STOP 
+     |     STORE 
+     |     <STR$> 
+     |     TAB +: ( 
+     |     TAN 
+     |     TEXT 
+     |     THEN 
+     |     TO 
+     |     TRACE 
+     |     USR 
+     |     VAL 
+     |     VLIN 
+     |     VTAB 
+     |     WAIT 
+     |     XPLOT 
+     |     XDRAW 
+
+ABS ::= 
+           A B S 
+
+AND ::= 
+           A N D 
+
+ASC ::= 
+           A S C 
+
+AT ::= 
+           <AT> +: <spaced o/n> 
+     |     _A T 
+     |     _a T 
+
+<spaced o/n> ::= 
+           { \t | \s }... { o | O | n | N } 
+     |     [ { \t | \s }... ] { <ch> -= { o | O | n | N } } 
+
+ATN ::= 
+           A T N 
+
+CALL ::= 
+           C A L L 
+
+<CHR$> ::= 
+           C H R $ 
+
+CLEAR ::= 
+           C L E A R 
+
+COLOR ::= 
+           C O L O R 
+
+CONT ::= 
+           C O N T 
+
+COS ::= 
+           C O S 
+
+DATA ::= 
+           D A T A 
+
+DEF ::= 
+           D E F 
+
+DEL ::= 
+           D E L 
+
+DIM ::= 
+           D I M 
+
+DRAW ::= 
+           D R A W 
+
+END ::= 
+           E N D 
+
+EXP ::= 
+           E X P 
+
+FLASH ::= 
+           F L A S H 
+
+FN ::= 
+           F N 
+
+FOR ::= 
+           F O R 
+
+FRE ::= 
+           F R E 
+
+GET ::= 
+           G E T 
+
+GOSUB ::= 
+           G O S U B 
+
+GOTO ::= 
+           G O T O 
+
+GR ::= 
+           G R 
+
+HCOLOR ::= 
+           H C O L O R 
+
+HGR ::= 
+           H G R 
+
+HGR2 ::= 
+           H G R 2 
+
+HIMEM ::= 
+           H I M E M 
+
+HLIN ::= 
+           H L I N 
+
+HOME ::= 
+           H O M E 
+
+HPLOT ::= 
+           H P L O T 
+
+HTAB ::= 
+           H T A B 
+
+IF ::= 
+           I F 
+
+<IN#> ::= 
+           I N # 
+
+INPUT ::= 
+           I N P U T 
+
+INT ::= 
+           I N T 
+
+INVERSE ::= 
+           I N V E R S E 
+
+<LEFT$> ::= 
+           L E F T $ 
+
+LEN ::= 
+           L E N 
+
+LET ::= 
+           L E T 
+
+LIST ::= 
+           L I S T 
+
+LOAD ::= 
+           L O A D 
+
+LOG ::= 
+           L O G 
+
+LOMEM ::= 
+           L O M E M 
+
+<MID$> ::= 
+           M I D $ 
+
+NEW ::= 
+           N E W 
+
+NEXT ::= 
+           N E X T 
+
+NORMAL ::= 
+           N O R M A L 
+
+NOT ::= 
+           N O T 
+
+NOTRACE ::= 
+           N O T R A C E 
+
+ON ::= 
+           O N 
+
+ONERR ::= 
+           O N E R R 
+
+OR ::= 
+           O R 
+
+PDL ::= 
+           P D L 
+
+PEEK ::= 
+           P E E K 
+
+PLOT ::= 
+           P L O T 
+
+POKE ::= 
+           P O K E 
+
+POP ::= 
+           P O P 
+
+POS ::= 
+           P O S 
+
+PRINT ::= 
+           P R I N T 
+
+<PR#> ::= 
+           P R # 
+
+READ ::= 
+           R E A D 
+
+RECALL ::= 
+           R E C A L L 
+
+REM ::= 
+           R E M 
+
+RESTORE ::= 
+           R E S T O R E 
+
+RESUME ::= 
+           R E S U M E 
+
+RETURN ::= 
+           R E T U R N 
+
+<RIGHT$> ::= 
+           R I G H T $ 
+
+RND ::= 
+           R N D 
+
+ROT ::= 
+           R O T 
+
+RUN ::= 
+           R U N 
+
+SAVE ::= 
+           S A V E 
+
+SCALE ::= 
+           S C A L E 
+
+SCRN ::= 
+           S C R N 
+
+SGN ::= 
+           S G N 
+
+SHLOAD ::= 
+           S H L O A D 
+
+SIN ::= 
+           S I N 
+
+SPC ::= 
+           S P C 
+
+SPEED ::= 
+           S P E E D 
+
+SQR ::= 
+           S Q R 
+
+STEP ::= 
+           S T E P 
+
+STOP ::= 
+           S T O P 
+
+STORE ::= 
+           S T O R E 
+
+<STR$> ::= 
+           S T R $ 
+
+TAB ::= 
+           T A B 
+
+TAN ::= 
+           T A N 
+
+TEXT ::= 
+           T E X T 
+
+THEN ::= 
+           T H E N 
+
+TO ::= 
+           T O 
+
+TRACE ::= 
+           T R A C E 
+
+USR ::= 
+           U S R 
+
+VAL ::= 
+           V A L 
+
+VLIN ::= 
+           V L I N 
+
+VTAB ::= 
+           V T A B 
+
+WAIT ::= 
+           W A I T 
+
+XPLOT ::= 
+           X P L O T 
+
+XDRAW ::= 
+           X D R A W 
+

@@ -1,0 +1,19 @@
+#sma <literal>
+
+<grm> ::= 
+           <data-stmt> 
+
+<data-stmt> ::= 
+           DATA <data-element-list> 
+
+<data-element-list> ::= 
+           <data-element-list> <,> <data-element> 
+     |     <data-element> 
+
+<data-element> ::= 
+           <integer-literal-constant> 
+     |     <real-literal-constant> 
+     |     <char-literal-constant> 
+     |     <literal> 
+     |     NONE +: { <,> | <CR> | EOF } 
+

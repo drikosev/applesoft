@@ -1,0 +1,60 @@
+#ignore <spaces>
+
+<data-element> ::= 
+           DATA 
+     |     <integer-literal-constant>   /* return Tr.SpacedToLiteral(action.value.ReduceId, 65594,value); */
+     |     <real-literal-constant>   /* return Tr.SpacedToLiteral(action.value.ReduceId, 65594,value,true); */
+     |     <char-literal-constant> 
+     |     <literal> 
+     |     <,> 
+     |     <spaces> 
+
+DATA ::= 
+           { D | d } [ { \s | \t }... ] { A | a } [ { \s | \t }... ] { T | t } [ { \s | \t }... ] { A | a } 
+
+<integer-literal-constant> ::= 
+           [ sign ] { 0 .. 9 } [ { \t | \s | 0 .. 9 }... ] 
+
+sign ::= 
+           { + | - } [ { \t | \s }... ] 
+
+<real-literal-constant> ::= 
+           [ sign ] digit-first [ . digit-string ] [ exponent-letter[ exponent ] ] 
+     |     [ sign ][ digit-first ] .[ digit-string ] [ exponent-letter[ exponent ] ] 
+
+digit-first ::= 
+           { 0 .. 9 } [ { \t | \s | 0 .. 9 }... ] 
+
+digit-string ::= 
+           { \t | \s | 0 .. 9 }... 
+
+exponent-letter ::= 
+           { E | e } [ { \t | \s }... ] 
+
+exponent ::= 
+           [ { + | - } [ { \t | \s }... ] ] digit-string 
+
+<char-literal-constant> ::= 
+           <dquoted-literal3> 
+
+<dquoted-literal3> ::= 
+           " [ <dquoted_char3> ... ][ " ] 
+
+<dquoted_char3> ::= 
+           { \u0001 .. \u007f } -= { " | \n | \r } 
+
+<literal> ::= 
+           <literal-first> [ <literal-ch> ... ] 
+
+<literal-first> ::= 
+           { \u0001 .. \u007f } -= { \r | \n | , | : | " | \t | \s } 
+
+<literal-ch> ::= 
+           { \u0001 .. \u007f } -= { \r | \n | , | : } 
+
+<,> ::= 
+           [ { \t | \s }... ] , [ { \t | \s }... ] 
+
+<spaces> ::= 
+           { \s | \t }... 
+

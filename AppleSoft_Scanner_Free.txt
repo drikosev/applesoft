@@ -1,0 +1,670 @@
+#ignore <spaces>
+
+token ::= 
+           <spaces> 
+     |     <line-comment> 
+     |     <whole-data-stmt> 
+     |     ABS 
+     |     AND 
+     |     ASC 
+     |     AT 
+     |     ATN 
+     |     CALL 
+     |     <CHR$> 
+     |     CLEAR 
+     |     COLOR +: = 
+     |     CONT 
+     |     COS 
+     |     DATA 
+     |     DEF 
+     |     DEL 
+     |     DIM 
+     |     DRAW 
+     |     END 
+     |     EXP 
+     |     FLASH 
+     |     FN 
+     |     FOR 
+     |     FRE 
+     |     GET 
+     |     GOSUB 
+     |     GOTO 
+     |     GR 
+     |     HCOLOR +: = 
+     |     HGR 
+     |     HGR2 
+     |     HIMEM +: : 
+     |     HLIN 
+     |     HOME 
+     |     HPLOT 
+     |     HTAB 
+     |     IF 
+     |     <IN#> 
+     |     INPUT 
+     |     INT 
+     |     INVERSE 
+     |     <LEFT$> 
+     |     LEN 
+     |     LET 
+     |     LIST 
+     |     LOAD 
+     |     LOG 
+     |     LOMEM +: : 
+     |     <MID$> 
+     |     NEW 
+     |     NEXT 
+     |     NORMAL 
+     |     NOT 
+     |     NOTRACE 
+     |     ON 
+     |     ONERR 
+     |     OR 
+     |     PDL 
+     |     PEEK 
+     |     PLOT 
+     |     POKE 
+     |     POP 
+     |     POS 
+     |     PRINT 
+     |     <PR#> 
+     |     READ 
+     |     RECALL 
+     |     REM 
+     |     RESTORE 
+     |     RESUME 
+     |     RETURN 
+     |     <RIGHT$> 
+     |     RND 
+     |     ROT +: = 
+     |     RUN 
+     |     SAVE 
+     |     SCALE +: = 
+     |     SCRN +: ( 
+     |     SGN 
+     |     SHLOAD 
+     |     SIN 
+     |     SPC +: ( 
+     |     SPEED +: = 
+     |     SQR 
+     |     STEP 
+     |     STOP 
+     |     STORE 
+     |     <STR$> 
+     |     TAB +: ( 
+     |     TAN 
+     |     TEXT 
+     |     THEN 
+     |     TO 
+     |     TRACE 
+     |     USR 
+     |     VAL 
+     |     VLIN 
+     |     VTAB 
+     |     WAIT 
+     |     XPLOT 
+     |     XDRAW 
+     |     OK 
+     |     <name> 
+     |     $ 
+     |     % 
+     |     = 
+     |     ? 
+     |     <:> 
+     |     <;> 
+     |     <,> 
+     |     <?> 
+     |     <(> 
+     |     <)> 
+     |     <rel-op> 
+     |     <add-op> 
+     |     <mult-op> 
+     |     <power-op> 
+     |     <CR> 
+     |     <integer-literal-constant> 
+     |     <linenum> 
+     |     <real-literal-constant> 
+     |     <char-literal-constant> 
+
+<spaces> ::= 
+           \n [ { \t | \r | \s | : | \n | ! [ { { \u0001 .. \t } | { \u000B .. \u007f } }... ] }... ] 
+     |     { \t | \s | <line-comment2> }... 
+
+<line-comment> ::= 
+           R E M [ <line-char> ... ] 
+
+<line-char> ::= 
+           <ch> -= { \r | \n } 
+     |     <smart-char> 
+
+<ch> ::= 
+           \u0001 .. \u007f 
+
+<smart-char> ::= 
+           \u201C 
+     |     \u2019 
+     |     \u2013 
+
+<whole-data-stmt> ::= 
+           DATA <data-element-list> 
+
+DATA ::= 
+           D A T A 
+
+<data-element-list> ::= 
+           [ { \t | \s }... ][ <data-element> ] [ { , [ { \t | \s }... ] <data-element> [ { \t | \s }... ] }... ] 
+
+<data-element> ::= 
+           <literal> 
+     |     <char-literal-constant> 
+     |     [ + | - ] <real-literal-constant> 
+     |     [ + | - ] <integer-literal-constant> 
+     |     NONE 
+
+<literal> ::= 
+           <literal-first> [ <literal-ch> ... ] 
+
+<literal-first> ::= 
+           { \u0001 .. \u007f } -= { \r | \n | , | : | " | \t | \s } 
+
+<literal-ch> ::= 
+           { \u0001 .. \u007f } -= { \r | \n | , | : } 
+     |     <dquote> 
+
+<char-literal-constant> ::= 
+           <dquoted-literal> 
+     |     <char-literal-constant2> 
+
+<dquoted-literal> ::= 
+           " [ <dquoted_char> ... ][ " ] 
+
+<dquoted_char> ::= 
+           { \u0001 .. \u007f } -= { " | \n | \r } 
+
+<real-literal-constant> ::= 
+           digit-string [ . digit-string ] [ exponent-letter[ exponent ] ] 
+     |     [ digit-string ] .[ digit-string ] [ exponent-letter[ exponent ] ] 
+
+digit-string ::= 
+           { 0 .. 9 }... 
+
+exponent-letter ::= 
+           E 
+     |     e 
+
+exponent ::= 
+           [ + | - ] digit-string 
+
+<integer-literal-constant> ::= 
+           { 0 .. 9 }... 
+
+ABS ::= 
+           A B S 
+
+AND ::= 
+           A N D 
+
+ASC ::= 
+           A S C 
+
+AT ::= 
+           A T 
+
+ATN ::= 
+           A T N 
+
+CALL ::= 
+           C A L L 
+
+<CHR$> ::= 
+           C H R $ 
+
+CLEAR ::= 
+           C L E A R 
+
+COLOR ::= 
+           C O L O R 
+
+CONT ::= 
+           C O N T 
+
+COS ::= 
+           C O S 
+
+DEF ::= 
+           D E F 
+
+DEL ::= 
+           D E L 
+
+DIM ::= 
+           D I M 
+
+DRAW ::= 
+           D R A W 
+
+END ::= 
+           E N D 
+
+EXP ::= 
+           E X P 
+
+FLASH ::= 
+           F L A S H 
+
+FN ::= 
+           F N 
+
+FOR ::= 
+           F O R 
+
+FRE ::= 
+           F R E 
+
+GET ::= 
+           G E T 
+
+GOSUB ::= 
+           G O S U B 
+
+GOTO ::= 
+           G O T O 
+
+GR ::= 
+           G R 
+
+HCOLOR ::= 
+           H C O L O R 
+
+HGR ::= 
+           H G R 
+
+HGR2 ::= 
+           H G R 2 
+
+HIMEM ::= 
+           H I M E M 
+
+HLIN ::= 
+           H L I N 
+
+HOME ::= 
+           H O M E 
+
+HPLOT ::= 
+           H P L O T 
+
+HTAB ::= 
+           H T A B 
+
+IF ::= 
+           I F 
+
+<IN#> ::= 
+           I N # 
+
+INPUT ::= 
+           I N P U T 
+
+INT ::= 
+           I N T 
+
+INVERSE ::= 
+           I N V E R S E 
+
+<LEFT$> ::= 
+           L E F T $ 
+
+LEN ::= 
+           L E N 
+
+LET ::= 
+           L E T 
+
+LIST ::= 
+           L I S T 
+
+LOAD ::= 
+           L O A D 
+
+LOG ::= 
+           L O G 
+
+LOMEM ::= 
+           L O M E M 
+
+<MID$> ::= 
+           M I D $ 
+
+NEW ::= 
+           N E W 
+
+NEXT ::= 
+           N E X T 
+
+NORMAL ::= 
+           N O R M A L 
+
+NOT ::= 
+           N O T 
+
+NOTRACE ::= 
+           N O T R A C E 
+
+ON ::= 
+           O N 
+
+ONERR ::= 
+           O N E R R 
+
+OR ::= 
+           O R 
+
+PDL ::= 
+           P D L 
+
+PEEK ::= 
+           P E E K 
+
+PLOT ::= 
+           P L O T 
+
+POKE ::= 
+           P O K E 
+
+POP ::= 
+           P O P 
+
+POS ::= 
+           P O S 
+
+PRINT ::= 
+           P R I N T 
+
+<PR#> ::= 
+           P R # 
+
+READ ::= 
+           R E A D 
+
+RECALL ::= 
+           R E C A L L 
+
+REM ::= 
+           R E M 
+
+RESTORE ::= 
+           R E S T O R E 
+
+RESUME ::= 
+           R E S U M E 
+
+RETURN ::= 
+           R E T U R N 
+
+<RIGHT$> ::= 
+           R I G H T $ 
+
+RND ::= 
+           R N D 
+
+ROT ::= 
+           R O T 
+
+RUN ::= 
+           R U N 
+
+SAVE ::= 
+           S A V E 
+
+SCALE ::= 
+           S C A L E 
+
+SCRN ::= 
+           S C R N 
+
+SGN ::= 
+           S G N 
+
+SHLOAD ::= 
+           S H L O A D 
+
+SIN ::= 
+           S I N 
+
+SPC ::= 
+           S P C 
+
+SPEED ::= 
+           S P E E D 
+
+SQR ::= 
+           S Q R 
+
+STEP ::= 
+           S T E P 
+
+STOP ::= 
+           S T O P 
+
+STORE ::= 
+           S T O R E 
+
+<STR$> ::= 
+           S T R $ 
+
+TAB ::= 
+           T A B 
+
+TAN ::= 
+           T A N 
+
+TEXT ::= 
+           T E X T 
+
+THEN ::= 
+           T H E N 
+
+TO ::= 
+           T O 
+
+TRACE ::= 
+           T R A C E 
+
+USR ::= 
+           U S R 
+
+VAL ::= 
+           V A L 
+
+VLIN ::= 
+           V L I N 
+
+VTAB ::= 
+           V T A B 
+
+WAIT ::= 
+           W A I T 
+
+XPLOT ::= 
+           X P L O T 
+
+XDRAW ::= 
+           X D R A W 
+
+OK ::= 
+           O K 
+
+<name> ::= 
+           not-contains-key +: { non-id-part } 
+     |     OK 
+     |     key-on-condition 
+
+not-contains-key ::= 
+           { not-starts-with-key } -= { O K | key-on-condition } 
+
+not-starts-with-key ::= 
+           { { A .. Z } [ { A .. Z | 0 .. 9 }... ] [ $ | % ] } -= { key [ { $ | % | A .. Z | 0 .. 9 }... ] } 
+
+key ::= 
+           A B S 
+     |     A N D 
+     |     A S C 
+     |     A T 
+     |     A T N 
+     |     C A L L 
+     |     C H R $ 
+     |     C L E A R 
+     |     C O N T 
+     |     C O S 
+     |     D A T A 
+     |     D E F 
+     |     D E L 
+     |     D I M 
+     |     D R A W 
+     |     E N D 
+     |     E X P 
+     |     F L A S H 
+     |     F N 
+     |     F O R 
+     |     F R E 
+     |     G E T 
+     |     G O S U B 
+     |     G O T O 
+     |     G R 
+     |     H G R 
+     |     H G R 2 
+     |     H L I N 
+     |     H O M E 
+     |     H P L O T 
+     |     H T A B 
+     |     I F 
+     |     I N # 
+     |     I N P U T 
+     |     I N T 
+     |     I N V E R S E 
+     |     L E F T $ 
+     |     L E N 
+     |     L E T 
+     |     L I S T 
+     |     L O A D 
+     |     L O G 
+     |     M I D $ 
+     |     N E W 
+     |     N E X T 
+     |     N O R M A L 
+     |     N O T 
+     |     N O T R A C E 
+     |     O N 
+     |     O N E R R 
+     |     O R 
+     |     P D L 
+     |     P E E K 
+     |     P L O T 
+     |     P O K E 
+     |     P O P 
+     |     P O S 
+     |     P R I N T 
+     |     P R # 
+     |     R E A D 
+     |     R E C A L L 
+     |     R E M 
+     |     R E S T O R E 
+     |     R E S U M E 
+     |     R E T U R N 
+     |     R I G H T $ 
+     |     R N D 
+     |     R U N 
+     |     S A V E 
+     |     S G N 
+     |     S H L O A D 
+     |     S I N 
+     |     S Q R 
+     |     S T E P 
+     |     S T O P 
+     |     S T O R E 
+     |     S T R $ 
+     |     T A N 
+     |     T E X T 
+     |     T H E N 
+     |     T O 
+     |     T R A C E 
+     |     U S R 
+     |     V A L 
+     |     V L I N 
+     |     V T A B 
+     |     W A I T 
+     |     X P L O T 
+     |     X D R A W 
+
+key-on-condition ::= 
+           L O M E M 
+     |     H I M E M 
+     |     S C R N 
+     |     T A B 
+     |     S P C 
+     |     C O L O R 
+     |     H C O L O R 
+     |     R O T 
+     |     S C A L E 
+     |     S P E E D 
+
+non-id-part ::= 
+           { \u0001 .. \u007f } -= { A .. Z | a .. z | 0 .. 9 | $ | % } 
+     |     <char-literal-constant2> 
+
+<:> ::= 
+           { : } [ { \t | \s | : }... ] 
+
+<;> ::= 
+           ; 
+
+<,> ::= 
+           , 
+
+<(> ::= 
+           ( 
+
+<)> ::= 
+           ) 
+
+<rel-op> ::= 
+           <=> 
+     |     <langle> 
+     |     <langle=> 
+     |     <langle> <rangle> 
+     |     <rangle> <langle> 
+     |     <rangle> 
+     |     <rangle=> 
+
+<=> ::= 
+           = 
+
+<langle> ::= 
+           < 
+
+<langle=> ::= 
+           <langle> = 
+
+<rangle> ::= 
+           > 
+
+<rangle=> ::= 
+           <rangle> = 
+
+<add-op> ::= 
+           + 
+     |     - 
+
+<mult-op> ::= 
+           / 
+     |     * 
+
+<power-op> ::= 
+           ^ 
+
+<CR> ::= 
+           \r 
+
+<linenum> ::= 
+           { 0 .. 9 }... 
+

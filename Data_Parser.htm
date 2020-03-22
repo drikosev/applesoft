@@ -1,0 +1,14 @@
+<HTML>	<HEAD><META http-equiv=Content-Type content="text/html; charset=utf-8"></HEAD><BODY><STRONG>#sma</STRONG>&nbsp;&lt;literal&gt;<BR>
+
+<BR><STRONG><A name="<grm>">&lt;grm&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<data-stmt>">&lt;data-stmt&gt;</A>&nbsp;
+<BR><BR><STRONG><A name="<data-stmt>">&lt;data-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATA&nbsp;<A href="#<data-element-list>">&lt;data-element-list&gt;</A>&nbsp;
+<BR><BR><STRONG><A name="<data-element-list>">&lt;data-element-list&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<data-element-list>">&lt;data-element-list&gt;</A>&nbsp;&lt;,&gt;&nbsp;<A href="#<data-element>">&lt;data-element&gt;</A>&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<data-element>">&lt;data-element&gt;</A>&nbsp;
+<BR><BR><STRONG><A name="<data-element>">&lt;data-element&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;integer-literal-constant&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;real-literal-constant&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;char-literal-constant&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;literal&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<FONT color="#cc3300">NONE</FONT>&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;<FONT color="#cc3300">{</FONT>&nbsp;&lt;,&gt;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&lt;CR&gt;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;<FONT color="#cc3300">EOF</FONT>&nbsp;<FONT color="#cc3300">}</FONT>&nbsp;
+<BR><BR>
+
+</BODY></HTML>

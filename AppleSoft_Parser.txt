@@ -1,0 +1,465 @@
+#disambiguate <expr>
+#disambiguate <print-expr>
+
+#sma <name>
+#sma <real-literal-constant>
+#sma OK
+
+<grm> ::= 
+           <program-unit> 
+
+<program-unit> ::= 
+           <lines> 
+
+<lines> ::= 
+           <lines> <line> 
+     |     <line> 
+
+<line> ::= 
+           <linenum> <stmts> <CR> 
+     |     <linenum> <stmts> +: EOF 
+     |     <ok-stmt> <CR>   /* Tr.error(L"OK could be a prompt, not a statement!"); */
+     |     <ok-stmt> +: EOF   /* Tr.error(L"OK could be a prompt, not a statement!"); */
+     |     <unlabeled-line-comment> <CR> 
+     |     <unlabeled-line-comment> +: EOF 
+     |     <empty-line> 
+     |     ERROR <CR> 
+
+<stmts> ::= 
+           <stmts> <stmt> 
+     |     <stmt> 
+
+<stmt> ::= 
+           <action-stmt> <:> 
+     |     <action-stmt> +: <CR> 
+     |     <action-stmt> +: EOF 
+     |     <declaration-stmt> <:> 
+     |     <declaration-stmt> +: <CR> 
+     |     <declaration-stmt> +: EOF 
+     |     <line-comment> +: <CR> 
+     |     <line-comment> +: EOF 
+     |     <empty-stmt> 
+
+<action-stmt> ::= 
+           <assignment> 
+     |     <call-stmt> 
+     |     <def-function-stmt> 
+     |     <drawing-stmt> 
+     |     <editing-stmt> 
+     |     <flow-control-stmt> 
+     |     <graphics-stmt> 
+     |     <halt-stmt> 
+     |     <io-stmt> 
+     |     <memory-stmt> 
+     |     <poke-stmt> 
+     |     <restore-stmt> 
+     |     <system-cmd> 
+     |     <video-stmt> 
+     |     <wait-stmt> 
+
+<assignment> ::= 
+           LET <designator> = <expr> 
+     |     <designator> = <expr> 
+
+<designator> ::= 
+           <id> <p-section-subscript-list> 
+     |     <id> 
+
+<id> ::= 
+           <name> 
+     |     <var> 
+
+<var> ::= 
+           <alphanumeric> -: { % | $ | <letter> | <digit> } 
+     |     <alphanumeric> % 
+     |     <alphanumeric> $ 
+
+<alphanumeric> ::= 
+           <letter> 
+     |     <alphanumeric> <letter> 
+     |     <alphanumeric> <digit> 
+
+<p-section-subscript-list> ::= 
+           <(> <section-subscript-list> <)> 
+
+<section-subscript-list> ::= 
+           <section-subscript-list> <,> <section-subscript> 
+     |     <section-subscript> 
+
+<section-subscript> ::= 
+           <expr> 
+
+<expr> ::= 
+           <expr> OR <expr> 
+     |     <expr> AND <expr> 
+     |     <not-op> <expr> 
+     |     <expr> <rel-op> <expr> ~: <rel-op> 
+     |     <expr> <add-op> <expr> 
+     |     <expr> <mult-op> <expr> 
+     |     <expr> <power-op> <expr> -: { <power-op> } 
+     |     <unary-op> <expr> -: { <power-op> | <mult-op> } 
+     |     <primary> 
+
+<not-op> ::= 
+           NOT 
+
+<unary-op> ::= 
+           <add-op> 
+
+<primary> ::= 
+           <constant> 
+     |     <designator> 
+     |     <p-expr> 
+     |     <function> 
+     |     <graphics-function> 
+     |     <machine-language-subroutine> 
+     |     <memory-function> 
+     |     <math-function> 
+     |     <peek-function> 
+     |     <pos-function> 
+     |     <string-function> 
+
+<constant> ::= 
+           <integer-literal-constant> 
+     |     <logical-literal-constant> 
+     |     <char-literal-constant> 
+     |     <real-literal-constant> 
+     |     <p-complex-literal-pair> 
+
+<p-expr> ::= 
+           <(> <expr> <)> 
+
+<function> ::= 
+           FN <id> <p-expr> 
+
+<graphics-function> ::= 
+           PDL <(> <expr> <)> 
+     |     SCRN <(> <expr> <)> 
+
+<machine-language-subroutine> ::= 
+           USR <(> <expr> <)> 
+
+<memory-function> ::= 
+           FRE <(> <expr> <)> 
+
+<math-function> ::= 
+           <math-intrinsic> <(> <expr> <)> 
+
+<math-intrinsic> ::= 
+           ABS 
+     |     ATN 
+     |     COS 
+     |     EXP 
+     |     INT 
+     |     LOG 
+     |     RND 
+     |     SGN 
+     |     SIN 
+     |     SQR 
+     |     TAN 
+
+<peek-function> ::= 
+           PEEK <(> <expr> <)> 
+
+<pos-function> ::= 
+           POS <(> <expr> <)> 
+
+<string-function> ::= 
+           ASC <(> <expr> <)> 
+     |     <CHR$> <(> <expr> <)> 
+     |     LEN <(> <expr> <)> 
+     |     <LEFT$> <(> <expr> <,> <expr> <)> 
+     |     <MID$> <(> <expr> <,> <expr> <)> 
+     |     <MID$> <(> <expr> <,> <expr> <,> <expr> <)> 
+     |     <RIGHT$> <(> <expr> <,> <expr> <)> 
+     |     <STR$> <(> <expr> <)> 
+     |     VAL <(> <expr> <)> 
+
+<call-stmt> ::= 
+           CALL <expr> 
+
+<def-function-stmt> ::= 
+           DEF <function> = <expr> 
+
+<drawing-stmt> ::= 
+           <draw-stmt> 
+     |     <xdraw-stmt> 
+     |     ROT = <expr> 
+     |     SCALE = <expr> 
+     |     SHLOAD 
+
+<draw-stmt> ::= 
+           DRAW <expr> 
+     |     DRAW <expr> AT <expr> <,> <expr> 
+
+<xdraw-stmt> ::= 
+           XDRAW <expr> 
+     |     XDRAW <expr> AT <expr> <,> <expr> 
+
+<editing-stmt> ::= 
+           CLEAR 
+     |     <list-stmt> 
+     |     <del-stmt> 
+     |     <tab-stmt> 
+     |     <home-stmt> 
+
+<list-stmt> ::= 
+           LIST 
+     |     LIST <linenum> 
+     |     LIST <linenum> <-> <linenum> 
+     |     LIST <linenum> <,> <linenum> 
+
+<del-stmt> ::= 
+           DEL <linenum> <,> <linenum> 
+
+<tab-stmt> ::= 
+           VTAB <expr> 
+     |     HTAB <expr> 
+
+<home-stmt> ::= 
+           HOME 
+
+<flow-control-stmt> ::= 
+           <for-stmt> 
+     |     <gosub-stmt> 
+     |     <goto-stmt> 
+     |     <if-stmt> 
+     |     <next-stmt> 
+     |     <on-goto-stmt> 
+     |     <on-error-stmt> 
+     |     <pop-stmt> 
+     |     <resume-stmt> 
+     |     <return-stmt> 
+
+<for-stmt> ::= 
+           FOR <id> = <expr> TO <expr> 
+     |     FOR <id> = <expr> TO <expr> STEP <expr> 
+
+<gosub-stmt> ::= 
+           GOSUB <linenum> 
+
+<goto-stmt> ::= 
+           GOTO <linenum> 
+
+<if-stmt> ::= 
+           IF <expr> THEN <instructions> 
+     |     IF <expr> THEN <linenum> 
+     |     IF <expr> GOTO <linenum> 
+
+<instructions> ::= 
+           <instructions> <instruction> 
+     |     <instruction> 
+
+<instruction> ::= 
+           <action-stmt> <:> 
+     |     <line-comment> +: { <CR> | EOF } 
+     |     <action-stmt> +: <CR> 
+
+<next-stmt> ::= 
+           NEXT <index-list> 
+     |     NEXT 
+
+<index-list> ::= 
+           <index-list> <,> <id> 
+     |     <id> 
+
+<on-goto-stmt> ::= 
+           ON <expr> <computed-goto-stmt> 
+
+<computed-goto-stmt> ::= 
+           GOTO <linenum-list> 
+     |     GOSUB <linenum-list> 
+
+<linenum-list> ::= 
+           <linenum-list> <,> <linenum> 
+     |     <linenum> 
+
+<on-error-stmt> ::= 
+           ONERR GOTO <linenum> 
+
+<pop-stmt> ::= 
+           POP 
+
+<resume-stmt> ::= 
+           RESUME 
+
+<return-stmt> ::= 
+           RETURN 
+
+<graphics-stmt> ::= 
+           TEXT 
+     |     GR 
+     |     COLOR = <expr> 
+     |     PLOT <expr> <,> <expr> 
+     |     HLIN <expr> <,> <expr> AT <expr> 
+     |     VLIN <expr> <,> <expr> AT <expr> 
+     |     HGR 
+     |     HGR2 
+     |     HCOLOR = <expr> 
+     |     <hplot-stmt> 
+
+<hplot-stmt> ::= 
+           HPLOT <expr> <,> <expr> 
+     |     HPLOT <expr> <,> <expr> <to-points> 
+     |     HPLOT <to-point> 
+
+<to-points> ::= 
+           <to-points> <to-point> 
+     |     <to-point> 
+
+<to-point> ::= 
+           TO <expr> <,> <expr> 
+
+<halt-stmt> ::= 
+           END 
+     |     STOP 
+
+<io-stmt> ::= 
+           <array-io> 
+     |     <get-stmt> 
+     |     <in-stmt> 
+     |     <input-stmt> 
+     |     <pr-stmt> 
+     |     <print-stmt> 
+     |     <read-stmt> 
+     |     <speed-stmt> 
+
+<array-io> ::= 
+           STORE <id> 
+     |     RECALL <id> 
+
+<get-stmt> ::= 
+           GET <id> 
+
+<in-stmt> ::= 
+           <IN#> <expr> 
+
+<input-stmt> ::= 
+           INPUT <io-list> 
+     |     INPUT <string> <;> <io-list> 
+
+<io-list> ::= 
+           <io-list> <,> <io-item> 
+     |     <io-item> 
+
+<io-item> ::= 
+           <expr> 
+     |     NONE +: { <;> | <:> | <CR> } 
+
+<string> ::= 
+           <expr> 
+
+<pr-stmt> ::= 
+           <PR#> <expr> 
+
+<print-stmt> ::= 
+           <PRINT> <print-list> 
+
+<PRINT> ::= 
+           PRINT 
+     |     ? 
+
+<print-list> ::= 
+           <print-list> <;> <print-item> -: { <add-op> } 
+     |     <print-list> <,> <print-item> -: { <add-op> } 
+     |     <print-list> <print-expr> -: { <add-op> } 
+     |     <print-item> -: { <add-op> } 
+
+<print-item> ::= 
+           <print-expr> 
+     |     NONE +: { <;> | <,> | <:> | <CR> | EOF } 
+
+<print-expr> ::= 
+           <print-expr> OR <print-expr> 
+     |     <print-expr> AND <print-expr> 
+     |     <not-op> <print-expr> 
+     |     <print-expr> <rel-op> <print-expr> ~: <rel-op> 
+     |     <print-expr> <add-op> <print-expr> 
+     |     <print-expr> <mult-op> <print-expr> 
+     |     <print-expr> <power-op> <print-expr> -: { <power-op> } 
+     |     <unary-op> <print-expr> -: { <power-op> | <mult-op> } 
+     |     <print-primary> 
+
+<print-primary> ::= 
+           <constant> 
+     |     <print-designator> 
+     |     <p-expr> 
+     |     <function> 
+     |     <graphics-function> 
+     |     <machine-language-subroutine> 
+     |     <memory-function> 
+     |     <math-function> 
+     |     <peek-function> 
+     |     <pos-function> 
+     |     <print-function> 
+     |     <string-function> 
+
+<print-designator> ::= 
+           <id> <p-section-subscript-list> 
+     |     <id> -: <(> 
+
+<print-function> ::= 
+           TAB <(> <expr> <)> 
+     |     SPC <(> <expr> <)> 
+
+<read-stmt> ::= 
+           READ <designator-list> 
+
+<designator-list> ::= 
+           <designator-list> <,> <designator> 
+     |     <designator> 
+
+<speed-stmt> ::= 
+           SPEED = <expr> 
+
+<memory-stmt> ::= 
+           HIMEM <:> <expr> 
+     |     LOMEM <:> <expr> 
+
+<poke-stmt> ::= 
+           POKE <expr> <,> <expr> 
+
+<restore-stmt> ::= 
+           RESTORE 
+
+<system-cmd> ::= 
+           CONT 
+     |     LOAD 
+     |     NEW 
+     |     NOTRACE 
+     |     RUN 
+     |     RUN <linenum> 
+     |     SAVE 
+     |     TRACE 
+
+<video-stmt> ::= 
+           FLASH 
+     |     INVERSE 
+     |     NORMAL 
+
+<wait-stmt> ::= 
+           WAIT <expr> <,> <expr> 
+     |     WAIT <expr> <,> <expr> <,> <expr> 
+
+<declaration-stmt> ::= 
+           <data-stmt> 
+     |     <dim-stmt> 
+
+<data-stmt> ::= 
+           <whole-data-stmt>   /*Tr.onDataStmt($$(0),$$(1)); */
+
+<dim-stmt> ::= 
+           DIM <designator-list> 
+
+<empty-stmt> ::= 
+           <:> 
+
+<ok-stmt> ::= 
+           OK 
+
+<unlabeled-line-comment> ::~ 
+           <line-comment>   /* Tr.error(L"Line Comment should begin with Line Number."); */
+
+<empty-line> ::= 
+           <CR> 
+

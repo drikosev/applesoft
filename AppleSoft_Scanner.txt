@@ -1,0 +1,120 @@
+#ignore <spaces>
+
+token ::= 
+           <spaces> 
+     |     OK 
+     |     <name> 
+     |     $ 
+     |     % 
+     |     = 
+     |     ? 
+     |     <:> 
+     |     <;> 
+     |     <,> 
+     |     <?> 
+     |     <(> 
+     |     <)> 
+     |     <rel-op> 
+     |     <add-op> 
+     |     <mult-op> 
+     |     <power-op> 
+     |     <CR> 
+     |     <integer-literal-constant> 
+     |     <linenum> 
+     |     <real-literal-constant> 
+     |     <char-literal-constant> 
+
+<spaces> ::= 
+           \n [ { \t | \r | \s | : | \n | ! [ { { \u0001 .. \t } | { \u000B .. \u007f } }... ] }... ] 
+     |     { \t | \s | <line-comment2> }... 
+
+OK ::= 
+           O K 
+
+<name> ::= 
+           { A .. Z } [ { A .. Z | 0 .. 9 }... ] [ $ | % ] 
+     |     OK 
+
+<:> ::= 
+           { : } [ { \t | \s | : }... ] 
+
+<;> ::= 
+           ; 
+
+<,> ::= 
+           , 
+
+<(> ::= 
+           ( 
+
+<)> ::= 
+           ) 
+
+<rel-op> ::= 
+           <=> 
+     |     <langle> 
+     |     <langle=> 
+     |     <langle> <rangle> 
+     |     <rangle> <langle> 
+     |     <rangle> 
+     |     <rangle=> 
+
+<=> ::= 
+           = 
+
+<langle> ::= 
+           < 
+
+<langle=> ::= 
+           <langle> = 
+
+<rangle> ::= 
+           > 
+
+<rangle=> ::= 
+           <rangle> = 
+
+<add-op> ::= 
+           + 
+     |     - 
+
+<mult-op> ::= 
+           / 
+     |     * 
+
+<power-op> ::= 
+           ^ 
+
+<CR> ::= 
+           \r 
+
+<integer-literal-constant> ::= 
+           { 0 .. 9 }... 
+
+<linenum> ::= 
+           { 0 .. 9 }... 
+
+<real-literal-constant> ::= 
+           digit-string [ . digit-string ] [ exponent-letter[ exponent ] ] 
+     |     [ digit-string ] .[ digit-string ] [ exponent-letter[ exponent ] ] 
+
+digit-string ::= 
+           { 0 .. 9 }... 
+
+exponent-letter ::= 
+           E 
+     |     e 
+
+exponent ::= 
+           [ + | - ] digit-string 
+
+<char-literal-constant> ::= 
+           <dquoted-literal> 
+     |     <char-literal-constant2> 
+
+<dquoted-literal> ::= 
+           " [ <dquoted_char> ... ] " 
+
+<dquoted_char> ::= 
+           { \u0001 .. \u007f } -= { " | \n | \r } 
+

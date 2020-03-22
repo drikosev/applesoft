@@ -1,0 +1,104 @@
+#ignore <spaces>
+
+token ::= 
+           <spaces> 
+     |     <whole-data-stmt>   /* Tr.ScannedDataStmt(); */
+     |     <line-comment> 
+     |     <char-literal-constant2> 
+     |     _A +: <T spaced O/N>   /* return Tr.A_onUpperAT(action.value.ReduceId,value); */
+     |     _a +: <t spaced o/n>   /* return Tr.a_onLowerAT(action.value.ReduceId,value); */
+
+<spaces> ::= 
+           { \t | \s }... 
+
+<whole-data-stmt> ::= 
+           DATA <data-element-list> 
+
+DATA ::= 
+           { D | d } [ { \s | \t }... ] { A | a } [ { \s | \t }... ] { T | t } [ { \s | \t }... ] { A | a } 
+
+<data-element-list> ::= 
+           [ { \t | \s }... ][ <data-element> ] [ { , [ { \t | \s }... ] <data-element> [ { \t | \s }... ] }... ] 
+
+<data-element> ::= 
+           <literal> 
+     |     <char-literal-constant> 
+     |     [ + | - ] <real-literal-constant> 
+     |     [ + | - ] <integer-literal-constant> 
+     |     NONE 
+
+<literal> ::= 
+           <literal-first> [ <literal-ch> ... ] 
+
+<literal-first> ::= 
+           { \u0001 .. \u007f } -= { \r | \n | , | : | " | \t | \s } 
+
+<literal-ch> ::= 
+           { \u0001 .. \u007f } -= { \r | \n | , | : } 
+     |     <dquote> 
+
+<char-literal-constant> ::= 
+           <dquoted-literal3> 
+
+<dquoted-literal3> ::= 
+           " [ <dquoted_char3> ... ][ " ] 
+
+<dquoted_char3> ::= 
+           { \u0001 .. \u007f } -= { " | \n | \r } 
+
+<real-literal-constant> ::= 
+           digit-string [ . digit-string ] [ exponent-letter[ exponent ] ] 
+     |     [ digit-string ] .[ digit-string ] [ exponent-letter[ exponent ] ] 
+
+digit-string ::= 
+           { \t | \s | 0 .. 9 }... 
+
+exponent-letter ::= 
+           E 
+     |     e 
+
+exponent ::= 
+           [ + | - ] digit-string 
+
+<integer-literal-constant> ::= 
+           { \t | \s | 0 .. 9 }... 
+
+<line-comment> ::= 
+           R E M [ <line-char> ... ] 
+
+<line-char> ::= 
+           <ch> -= { \r | \n } 
+     |     <smart-char> 
+
+<ch> ::= 
+           \u0001 .. \u007f 
+
+<smart-char> ::= 
+           \u201C 
+     |     \u2019 
+     |     \u2013 
+
+<char-literal-constant2> ::= 
+           <dquoted-literal> 
+
+<dquoted-literal> ::= 
+           " [ <dquoted_char> ... ][ " ] 
+
+<dquoted_char> ::= 
+           { \u0001 .. \u007f } -= { " | \n | \r } 
+
+_A ::= 
+           A 
+
+<T spaced O/N> ::= 
+           [ { \s | \t }... ] { T } { \t | \s }... { O | N } 
+     |     [ { \s | \t }... ] { T } [ { \t | \s }... ] { <ch> -= { O | N } } 
+
+_a ::= 
+           A 
+     |     a 
+
+<t spaced o/n> ::= 
+           [ { \s | \t }... ] { T | t } { \t | \s }... { o | O | n | N } 
+     |     [ { \s | \t }... ] { T | t } [ { \t | \s }... ] { <ch> -= { o | O | n | N } } 
+

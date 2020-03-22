@@ -1,0 +1,267 @@
+#ignore <spaces>
+
+#sma HIMEM
+#sma LOMEM
+
+token ::= 
+           ABS 
+     |     AND 
+     |     ASC 
+     |     ATN 
+     |     <CHR$> 
+     |     CLEAR 
+     |     CONT 
+     |     COS 
+     |     DATA 
+     |     DEF 
+     |     DIM 
+     |     END 
+     |     EXP 
+     |     FN 
+     |     FOR 
+     |     FRE 
+     |     GOSUB 
+     |     GOTO 
+     |     IF 
+     |     <IN#> 
+     |     INPUT 
+     |     INT 
+     |     <LEFT$> 
+     |     LEN 
+     |     LET 
+     |     LIST 
+     |     LOAD 
+     |     LOG 
+     |     <MID$> 
+     |     NEW 
+     |     NEXT 
+     |     NORMAL 
+     |     NOT 
+     |     NOTRACE 
+     |     ON 
+     |     ONERR 
+     |     OR 
+     |     PEEK 
+     |     POKE 
+     |     POS 
+     |     PRINT 
+     |     <PR#> 
+     |     READ 
+     |     REM 
+     |     RESTORE 
+     |     RETURN 
+     |     <RIGHT$> 
+     |     RND 
+     |     RUN 
+     |     SAVE 
+     |     SGN 
+     |     SHLOAD 
+     |     SIN 
+     |     SPC 
+     |     SQR 
+     |     STEP 
+     |     STOP 
+     |     STORE 
+     |     <STR$> 
+     |     TAN 
+     |     THEN 
+     |     TO 
+     |     USR 
+     |     VAL 
+     |     WAIT 
+
+ABS ::= 
+           A B S 
+
+AND ::= 
+           A N D 
+
+ASC ::= 
+           A S C 
+
+ATN ::= 
+           A T N 
+
+<CHR$> ::= 
+           C H R $ 
+
+CLEAR ::= 
+           C L E A R 
+
+CONT ::= 
+           C O N T 
+
+COS ::= 
+           C O S 
+
+DATA ::= 
+           D A T A 
+
+DEF ::= 
+           D E F 
+
+DIM ::= 
+           D I M 
+
+END ::= 
+           E N D 
+
+EXP ::= 
+           E X P 
+
+FN ::= 
+           F N 
+
+FOR ::= 
+           F O R 
+
+FRE ::= 
+           F R E 
+
+GOSUB ::= 
+           G O S U B 
+
+GOTO ::= 
+           G O T O 
+
+IF ::= 
+           I F 
+
+<IN#> ::= 
+           I N # 
+
+INPUT ::= 
+           I N P U T 
+
+INT ::= 
+           I N T 
+
+<LEFT$> ::= 
+           L E F T $ 
+
+LEN ::= 
+           L E N 
+
+LET ::= 
+           L E T 
+
+LIST ::= 
+           L I S T 
+
+LOAD ::= 
+           L O A D 
+
+LOG ::= 
+           L O G 
+
+<MID$> ::= 
+           M I D $ 
+
+NEW ::= 
+           N E W 
+
+NEXT ::= 
+           N E X T 
+
+NORMAL ::= 
+           N O R M A L 
+
+NOT ::= 
+           N O T 
+
+NOTRACE ::= 
+           N O T R A C E 
+
+ON ::= 
+           O N 
+
+ONERR ::= 
+           O N E R R 
+
+OR ::= 
+           O R 
+
+PEEK ::= 
+           P E E K 
+
+POKE ::= 
+           P O K E 
+
+POS ::= 
+           P O S 
+
+PRINT ::= 
+           P R I N T 
+
+<PR#> ::= 
+           P R 
+
+READ ::= 
+           R E A D 
+
+REM ::= 
+           R E M 
+
+RESTORE ::= 
+           R E S T O R E 
+
+RETURN ::= 
+           R E T U R N 
+
+<RIGHT$> ::= 
+           R I G H T $ 
+
+RND ::= 
+           R N D 
+
+RUN ::= 
+           R U N 
+
+SAVE ::= 
+           S A V E 
+
+SGN ::= 
+           S G N 
+
+SHLOAD ::= 
+           S H L O A D 
+
+SIN ::= 
+           S I N 
+
+SPC ::= 
+           S P C 
+
+SQR ::= 
+           S Q R 
+
+STEP ::= 
+           S T E P 
+
+STOP ::= 
+           S T O P 
+
+STORE ::= 
+           S T O R E 
+
+<STR$> ::= 
+           S T R $ 
+
+TAN ::= 
+           T A N 
+
+THEN ::= 
+           T H E N 
+
+TO ::= 
+           T O 
+
+USR ::= 
+           U S R 
+
+VAL ::= 
+           V A L 
+
+WAIT ::= 
+           W A I T 
+
