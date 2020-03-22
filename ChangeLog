@@ -9,17 +9,23 @@
 
  AppleSoft Scanner 
  -----------------
- [2015-03-22 ] Undefined "<->" (201) symbol, required in LIST statements.                                           (todo)
+ [2015-03-22] Undefined "<->" (201) symbol, required in LIST statements.                                            (todo)
 
 
 
  AppleSoft Scanner Free 
  ----------------------
- [2015-03-22 ] Undefined "<->" (201) symbol, required in LIST statements.                                           (todo)
+ [2015-03-22] Undefined "<->" (201) symbol, required in LIST statements.                                            (todo)
 
 
 
- Translator (sem. actions)
- --------------------------
- [2015-03-22 ] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only LIST a - b.                  (todo)
+ AppleSoft Parser 
+ -----------------
+ [2015-03-22] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only LIST a - b.                   (todo)
+        Note: A Sem. action will make the validation.
 
+
+
+ AppleSoft Data Scanner 
+ ----------------------
+ [2015-03-22] A Sem. action must check if a dialect accepts lower case letters in the DATA keyword.                 (todo)
