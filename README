@@ -128,7 +128,7 @@ scanners are cascaded only for programs coded in space optional form.
  [1] http://www.classiccmp.org/cini/pdf/Apple/
      A survived AppleSoft manual (programming reference) that describes
      in some detail the syntax of the language. 
- [2] http://www.hoist-point.com/AppleSoft_basic_tutorial.htm
+ [2] www.hoist-point.com/applesoft_basic_tutorial.htm
      Several Basic examples, likely supported by the Simulator below.
  [3] https://www.calormen.com/jsbasic/
      An online, AppleSoft Simulator that accepts space separated tokens.  
