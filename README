@@ -1,0 +1,136 @@
+
+Mar 22, 2020
+
+
+   I AppleSoft Grammar
+  II Files
+ III External Links
+  
+
+
+                 AppleSoft - Enhanced LALR BNF Grammar & Lexical Rules
+                 -----------------------------------------------------
+
+
+
+ I AppleSoft Grammar
+ -------------------
+
+ AppleSoft is a space optional Basic dialect developed in the 70s for the Apple II
+computer and included various extensions, like color graphics that weren't available on
+other computers that also used Basic. The Basic dialect supported by the Compukit UK101 ie
+doesn't accepts the HOME or TEXT statements and likely runs only in text mode.
+
+ Nowadays, one can run such Basic programs in emulators [*3][*4], unless you own ie an
+Apple II computer that is still functional (I don't). As a result this grammar is just
+approximative, in contrast to my Fortran grammar on GitHub which is more accurate since I
+could find several Fortran programs coded in fixed form. Feedback is much welcome!    
+
+ Since Basic allows the use of identifiers before keywords, a program originally coded as
+space optional may be interpreted quite different by a modern tool that accepts only space
+separated keywords and names, if names just can't start with keywords but may contain one. 
+
+ Being careful about the above issue, I could run few modern math formulas found at [*2]
+and [*3] in the Compukit UK101 simulator by just commenting any HOME and TEXT statements.
+
+ To implement the complex spacing rules of AppleSoft, the front-end uses 2 extra cascaded
+scanners, (a) a pre-processor that scans comments, strings and Data statements and (b) a
+distinct scanner for keywords. Names consist of the remaining letters and digits. These
+scanners are cascaded only for programs coded in space optional form.
+
+
+ Notes:
+ [1] One can safely assume that these fresh BNF grammars haven't been tested thoroughly.
+
+
+
+ II Files
+ --------
+
+ 1) The AppleSoft Preprocessor
+    --------------------------
+    -It Scans Data Statements, Strings, Comments, the key AT and strips out spaces.
+    1.1) The "AppleSoft_Preprocessor.txt" contains the lexical rules of the AppleSoft
+         Preprocessor.
+    1.2) The "AppleSoft_Preprocessor.htm" has the same content as the above in HTML.
+
+
+ 2) Basic Keywords
+    --------------
+    -AppleSoft keywords are scanned in advance and thus names don't include any of them.
+    2.1) The "AppleSoft_Keys.txt" contains the lexical rules of the AppleSoft keywords.
+    2.2) The "AppleSoft_Keys.htm" has the same content as the above in HTML format.
+
+    -Basic Keywords of the dialect supported by the Compukit UK101 are scanned in advance.
+    2.3) The "UK101_Keys.txt" contains the lexical rules of the UK101 keywords.
+    2.4) The "UK101_Keys.htm" has the same content as the above in HTML format.
+
+
+ 3) The AppleSoft Scanner
+    ---------------------
+    -It recognizes names, delimiters, and operators, apart already scanned keywords. 
+    3.1) The "AppleSoft_Scanner.txt" contains the lexical rules of the AppleSoft scanner.
+    3.2) The "AppleSoft_Scanner.htm" has the same content as the above in HTML format.
+
+    -A variant of the AppleSoft II scanner that recognizes space separated keywords &
+    names and in a single pass. It contains the keywords and rules of the Preprocessor.
+    3.3) The "AppleSoft_Scanner_Free.txt" contains the lexical rules of the free scanner.
+    3.4) The "AppleSoft_Scanner_Free.htm" has the same content as the above in HTML.
+
+
+ 4) The AppleSoft Parser
+    -------------------
+    -It validates syntactically an AppleSoft program (or UK101).
+    4.1) The "AppleSoft_Parser.txt" contains the syntax rules of the AppleSoft parser.
+    4.2) The "AppleSoft_Parser.htm" has the same content as the above in HTML format.
+
+
+ 5) The Data Parser
+    ---------------
+    -It parses tokenized Data statements. It's an embedded parser currently called by the
+    AppleSoft Parser to process scanned Data statements. The following two lines show ie
+    how it's been linked in the BNF rule <data-stmt>.
+
+    <data-stmt> ::= 
+           <whole-data-stmt>   /*Tr.onDataStmt($$(0),$$(1)); */
+
+ 
+    5.1) The "Data_parser.txt" contains the syntax rules used in Data statements.
+    5.2) The "Data_parser.htm" has the same content as the above in HTML format.
+
+
+ 6) Data Scanner
+    ------------
+    -It tokenizes scanned Data statements. It's called by the Data Parser. Spaces are
+     handled by Semantic Actions. A returned real-literal-constant ie can be a literal, 
+     not vice versa. Depending on the dialect, a lower 'e' or space may not be acceptable
+     in a real number, in which case a READ statement would accept it only as a string. 
+    6.1) The "Data_Scanner.txt" contains the lexical rules used in Data statements. 
+    6.2) The "Data_Scanner.htm" has the same content as the above in HTML format.
+
+
+
+ 7) The command bcheck (in progress...)
+    ------------------
+
+    The command "bcheck" (binary) is an AppleSoft parser (front-end) that validates
+    syntactically a Basic program according to the BNF rules of the AppleSoft_Parser.txt.
+    It supports also the UK101 dialect, along with a modern variant (not space optional)
+    that may parse several examples found at [*2] & [*3]. It can read only ASCII files. 
+
+    It can be installed on an Intel based Mac (minimum OS X 10.9), a Linux i386/x86_64
+    system (minimum RedHat 9 but also ie on Ubuntu 14.04 i386), or Windows via Cygwin:
+
+
+
+ III External Links
+ ------------------
+ [1] http://www.classiccmp.org/cini/pdf/Apple/
+     A survived AppleSoft manual (programming reference) that describes
+     in some detail the syntax of the language. 
+ [2] http://www.hoist-point.com/AppleSoft_basic_tutorial.htm
+     Several Basic examples, likely supported by the Simulator below.
+ [3] https://www.calormen.com/jsbasic/
+     An online, AppleSoft Simulator that accepts space separated tokens.  
+ [4] http://uk101.sourceforge.net/docs/index.html
+     A portable Simulator of the Compukit UK101 with some examples.
