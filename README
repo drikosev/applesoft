@@ -110,7 +110,7 @@ scanners are cascaded only for programs coded in space optional form.
 
 
 
- 7) The command bcheck (in progress...)
+ 7) The command bcheck
     ------------------
 
     The command "bcheck" (binary) is an AppleSoft parser (front-end) that validates
@@ -122,6 +122,10 @@ scanners are cascaded only for programs coded in space optional form.
 
     It can be installed on an Intel based Mac (minimum OS X 10.9), a Linux i386/x86_64
     system (minimum RedHat 9 but also ie on Ubuntu 14.04 i386), or Windows via Cygwin:
+
+
+    SHA1(applesoft-bcheck-2020-03-22.zip)= 7f60011fa01dfdaab42b4a4a8adf6121d1f5019e
+
 
 
 
