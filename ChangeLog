@@ -23,6 +23,9 @@
  -----------------
  [2015-03-22] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only LIST a - b.                   (todo)
         Note: A Sem. action will make the validation.
+ [2015-03-23] The <if-stmt> should match all the instructions in a line:                                            (todo)
+              1 IF X THEN GOTO 2: PRINT "This is matched in <stmts>"
+              2 END
 
 
 
