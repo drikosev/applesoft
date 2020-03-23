@@ -2,8 +2,9 @@
 
  AppleSoft Preprocessor
  ---------------------
- [2020-03-21] Due to a bug in Syntaxis, smart quotes are exported unreadable in file "AppleSoft_Preprocessor.txt".  (done)
-              Hope, I can export & reimport the file with the new rule "<smart-char>::= \u201C | \u2019 | \u2013".
+ [2020-03-21] Smart quotes are exported unreadable in file "AppleSoft_Preprocessor.txt", which                      (done)
+              is a bug in Syntaxis. Hope, I can export & reimport the file with the new rule:
+              <smart-char>::= \u201C | \u2019 | \u2013
               
 
 
@@ -26,9 +27,18 @@
  [2015-03-23] Likely, an <if-stmt> should match all the following instructions in the same line:                    (todo)
               1 IF X THEN 2: PRINT "This is matched in <stmts>"
               2 END
+ [2015-03-24] Issue a warning if a label (linenum) is redefined.                                                    (todo)
 
 
 
  Data Scanner 
  ------------
  [2015-03-22] A Sem. action must check if a dialect accepts lower case letters in the DATA keyword.                 (todo)
+
+
+
+ Main Program
+ ------------
+ [2015-03-24] We could delete AppleSoft specific keywords from error messages for the UK101 dialect.                (todo)
+        Note: This will work for error messages containing the term 'Expected' followed by a ':'.
+
