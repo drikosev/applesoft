@@ -28,6 +28,8 @@
               1 IF X THEN 2: PRINT "This is matched in <stmts>"
               2 END
  [2015-03-24] Issue a warning if a label (linenum) is redefined.                                                    (todo)
+ [2015-03-24] Likely, the power operator is left associative. Yet, this grammar assumes it's right                  (todo)
+              and I've to remove the follow restriction "-: { <power-op> }" from power expressions. 
 
 
 
