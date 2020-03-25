@@ -3,7 +3,7 @@ Mar 25, 2020
 
 
    I About AppleSoft
-  II Files
+  II Grammar Files
  III External Links
   
 
@@ -17,14 +17,14 @@ Mar 25, 2020
  -----------------
 
  AppleSoft is a space optional Basic dialect developed in the 70s for the Apple II
-computer and included various extensions, like color graphics that weren't available on
+computer and included various extensions, like colour graphics that weren't available on
 other computers that also used Basic. The Basic dialect supported by the Compukit UK101 ie
 doesn't accepts the HOME or TEXT statements and likely runs only in text mode.
 
  Nowadays, one can run such Basic programs in emulators [*3][*4], unless you own ie an
 Apple II computer that is still functional (I don't). As a result this grammar is just
 approximative, in contrast to my Fortran grammar on GitHub which is more accurate since I
-could find several Fortran programs coded in fixed form. Feedback is much welcome!    
+could find several Fortran programs coded in fixed form. Feedback is welcome!    
 
  Since Basic allows the use of identifiers before keywords, a program originally coded as
 space optional may be interpreted quite different by a modern tool that accepts only space
@@ -35,8 +35,11 @@ and [*3] in the Compukit UK101 simulator by just commenting any HOME and TEXT st
 
  To implement the complex spacing rules of AppleSoft, the front-end uses 2 extra cascaded
 scanners, (a) a pre-processor that scans comments, strings and Data statements and (b) a
-distinct scanner for keywords. Names consist of the remaining letters and digits. These
-scanners are cascaded only for programs coded in space optional form.
+distinct scanner for keywords. Finally, (c) names consist of the remaining letters and
+digits. These scanners are cascaded only for programs coded in space optional form.
+
+ To sum up, this project focuses on the tokenization of AppleSoft and one could hand code
+a single scanner by following our model solution that consists of three distinct phases. 
 
 
  Notes:
@@ -140,3 +143,5 @@ scanners are cascaded only for programs coded in space optional form.
      An online, AppleSoft Simulator that accepts space separated tokens.  
  [4] http://uk101.sourceforge.net/docs/index.html
      A portable Simulator of the Compukit UK101 with some examples.
+ [5] https://compilers.iecc.com/comparch/article/20-03-027
+     Announcement of the project at comp.compilers
