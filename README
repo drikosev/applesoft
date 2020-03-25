@@ -47,7 +47,7 @@ distinct scanner for keywords. Finally, (c) names consist of the remaining lette
 digits. These scanners are cascaded only for programs coded in space optional form.
 
  To sum up, this project focuses on the tokenization of AppleSoft and one could hand code
-a single scanner by following our model solution that consists of several distinct phases. 
+a single scanner by following our model solution that consists of 3+1 distinct phases. 
 
 
  Notes:
