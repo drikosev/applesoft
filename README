@@ -2,7 +2,7 @@
 Mar 25, 2020
 
 
-   I AppleSoft Grammar
+   I About AppleSoft
   II Files
  III External Links
   
@@ -13,8 +13,8 @@ Mar 25, 2020
 
 
 
- I AppleSoft Grammar
- -------------------
+ I About AppleSoft
+ -----------------
 
  AppleSoft is a space optional Basic dialect developed in the 70s for the Apple II
 computer and included various extensions, like color graphics that weren't available on
@@ -135,7 +135,7 @@ scanners are cascaded only for programs coded in space optional form.
      A survived AppleSoft manual (programming reference) that describes
      in some detail the syntax of the language. 
  [2] www.hoist-point.com/applesoft_basic_tutorial.htm
-     Several Basic examples, likely supported by the Simulator below.
+     Several examples, likely supported by the AppleSoft Simulator below.
  [3] https://www.calormen.com/jsbasic/
      An online, AppleSoft Simulator that accepts space separated tokens.  
  [4] http://uk101.sourceforge.net/docs/index.html
