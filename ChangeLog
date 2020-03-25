@@ -10,37 +10,50 @@
 
  AppleSoft Scanner 
  -----------------
- [2015-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                                (todo)
+ [2015-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                                (done)
 
 
 
  AppleSoft Scanner Free 
  ----------------------
- [2015-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                                (todo)
+ [2015-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                                (done)
 
 
 
  AppleSoft Parser 
  -----------------
- [2015-03-22] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only "LIST a - b".                 (todo)
+ [2015-03-22] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only "LIST a - b".                 (done)
         Note: A Sem. action will make the validation.
- [2015-03-23] Likely, an <if-stmt> should match all the following instructions in the same line:                    (todo)
+ [2015-03-23] Likely, an <if-stmt> should match all the following instructions in the same line:                    (done)
+              $ cat print-stack.basic
               1 IF X THEN 2: PRINT "This is matched in <stmts>"
               2 END
- [2015-03-24] Issue a warning if a label (linenum) is redefined.                                                    (todo)
- [2015-03-24] Likely, the power operator is left associative. Yet, this grammar assumes it's right                  (todo)
-              and I've to remove the follow restriction "-: { <power-op> }" from power expressions. 
+
+ [2015-03-24] Issue a warning if a label (linenum) is redefined.                                                    (done)
+ [2015-03-24] Likely, the power operator is left associative. Yet, this grammar assumes it's right                  (done)
+              and I've to remove the Follow Restriction "-: { <power-op> }" from power expressions. 
+              $ cat print-1.basic
+              1 PRINT  "128=", 2 * 2 ^ 2 ^ 3
+              2 END
+
+ [2015-03-24] The grammar doesn't allow lines containing only a label (linenum).                                    (done)
+              $ cat empty-lines-3.txt
+              010 
+              020 END
+
+        Note: The proposed token in error messages however for CR (Carriage Return) will be the ':'.
 
 
 
  Data Scanner 
  ------------
- [2015-03-22] A Sem. action must check if a dialect accepts lower case letters in the DATA keyword.                 (todo)
+ [2015-03-22] A Sem. action must check if a dialect accepts lower case letters in the DATA keyword.                 (done)
 
 
 
  Main Program
  ------------
- [2015-03-24] We could delete AppleSoft specific keywords from error messages for the UK101 dialect.                (todo)
+ [2015-03-24] We could delete AppleSoft specific keywords from error messages for the UK101 dialect.                (done)
         Note: This will work for error messages containing the term 'Expected' followed by a ':'.
+        Note: So, we propose to the user keywords per dialect in error messages.
 

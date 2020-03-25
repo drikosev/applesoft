@@ -14,14 +14,19 @@
      |     <line> 
 
 <line> ::= 
-           <linenum> <stmts> <CR> 
-     |     <linenum> <stmts> +: EOF 
+           <label-definition> <stmts> <CR> 
+     |     <label-definition> <stmts> +: EOF 
+     |     <label-definition> <CR> 
+     |     <label-definition> +: EOF 
      |     <ok-stmt> <CR>   /* Tr.error(L"OK could be a prompt, not a statement!"); */
      |     <ok-stmt> +: EOF   /* Tr.error(L"OK could be a prompt, not a statement!"); */
      |     <unlabeled-line-comment> <CR> 
      |     <unlabeled-line-comment> +: EOF 
      |     <empty-line> 
      |     ERROR <CR> 
+
+<label-definition> ::= 
+           <linenum>   /* Tr.onLabelDefinition( $$(0), $$(1) ); */
 
 <stmts> ::= 
            <stmts> <stmt> 
@@ -94,7 +99,7 @@
      |     <expr> <rel-op> <expr> ~: <rel-op> 
      |     <expr> <add-op> <expr> 
      |     <expr> <mult-op> <expr> 
-     |     <expr> <power-op> <expr> -: { <power-op> } 
+     |     <expr> <power-op> <expr> 
      |     <unary-op> <expr> -: { <power-op> | <mult-op> } 
      |     <primary> 
 
@@ -119,10 +124,8 @@
 
 <constant> ::= 
            <integer-literal-constant> 
-     |     <logical-literal-constant> 
      |     <char-literal-constant> 
      |     <real-literal-constant> 
-     |     <p-complex-literal-pair> 
 
 <p-expr> ::= 
            <(> <expr> <)> 
@@ -202,10 +205,10 @@
      |     <home-stmt> 
 
 <list-stmt> ::= 
-           LIST 
-     |     LIST <linenum> 
-     |     LIST <linenum> <-> <linenum> 
-     |     LIST <linenum> <,> <linenum> 
+           LIST   /* Tr.onList( $$(0), $$(0), $$(0),'0'); */
+     |     LIST <linenum>   /* Tr.onList( $$(0), $$(2), $$(2), '1' ); */
+     |     LIST <linenum> <-> <linenum>   /* Tr.onList( $$(0), $$(2), $$(4), '2'); */
+     |     LIST <linenum> <,> <linenum>   /* Tr.onList( $$(0), $$(2), $$(4), '2', ',' ); */
 
 <del-stmt> ::= 
            DEL <linenum> <,> <linenum> 
@@ -240,13 +243,17 @@
            GOTO <linenum> 
 
 <if-stmt> ::= 
-           IF <expr> THEN <instructions> 
-     |     IF <expr> THEN <linenum> 
-     |     IF <expr> GOTO <linenum> 
+           <if-clause> THEN <instructions> +: { <CR> | EOF } 
+     |     <if-clause> <instructions> +: { <CR> | EOF } 
+
+<if-clause> ::= 
+           IF <expr> +: { THEN | GOTO } 
 
 <instructions> ::= 
            <instructions> <instruction> 
      |     <instruction> 
+     |     <linenum> <:> 
+     |     <linenum> +: { <CR> | EOF } 
 
 <instruction> ::= 
            <action-stmt> <:> 
@@ -374,7 +381,7 @@
      |     <print-expr> <rel-op> <print-expr> ~: <rel-op> 
      |     <print-expr> <add-op> <print-expr> 
      |     <print-expr> <mult-op> <print-expr> 
-     |     <print-expr> <power-op> <print-expr> -: { <power-op> } 
+     |     <print-expr> <power-op> <print-expr> 
      |     <unary-op> <print-expr> -: { <power-op> | <mult-op> } 
      |     <print-primary> 
 

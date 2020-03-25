@@ -1,7 +1,7 @@
 #ignore <spaces>
 
 <data-element> ::= 
-           DATA 
+           DATA   /* return Tr.ValidateDataCase(action.value.ReduceId,value); */
      |     <integer-literal-constant>   /* return Tr.SpacedToLiteral(action.value.ReduceId, 65594,value); */
      |     <real-literal-constant>   /* return Tr.SpacedToLiteral(action.value.ReduceId, 65594,value,true); */
      |     <char-literal-constant> 
