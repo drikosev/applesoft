@@ -43,7 +43,7 @@
 
         Note: The proposed token in error messages however for CR (Carriage Return) will be the ':'.
 
- [2020-03-25] The Compukit UK101 accepts this program, but couldn't READ N.                                         (todo)
+ [2020-03-25] The Compukit UK101 accepts this program but couldn't READ N.                                          (done)
               $ cat if-data.basic && bcheck if-data.basic
               010 X=1
               020 IF X > 0 THEN DATA 1
@@ -61,7 +61,7 @@
 
         Note: The AppleSoft Simulator fails to parse the second line.
 
- [2020-03-25] Both the Compukit UK101 and the AppleSoft Simulator accept this program.                              (todo)
+ [2020-03-25] Both the Compukit UK101 and the AppleSoft Simulator accept this program.                              (done)
               $ cat if-dim.basic && bcheck if-dim.basic
               010 X=-1
               020 IF X > 0 THEN DIM A(1)
@@ -90,4 +90,4 @@
  [2020-03-24] We could delete AppleSoft specific keywords from error messages for the UK101 dialect.                (done)
         Note: This will work for error messages containing the term 'Expected' followed by a ':'.
         Note: So, we propose to the user keywords per dialect in error messages.
-        Note: [25/3] The first comma as we see ie with the error message for program "if-dim.basic".                (todo)
+        Note: [25/3] Extra comma as we see ie with the error message for program "if-dim.basic".                    (done)

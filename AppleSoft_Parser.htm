@@ -161,8 +161,16 @@
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;linenum&gt;&nbsp;&lt;:&gt;&nbsp;
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;linenum&gt;&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;<FONT color="#cc3300">{</FONT>&nbsp;&lt;CR&gt;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;<FONT color="#cc3300">EOF</FONT>&nbsp;<FONT color="#cc3300">}</FONT>&nbsp;
 <BR><BR><STRONG><A name="<instruction>">&lt;instruction&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<action-stmt>">&lt;action-stmt&gt;</A>&nbsp;&lt;:&gt;&nbsp;
-<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;line-comment&gt;&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;<FONT color="#cc3300">{</FONT>&nbsp;&lt;CR&gt;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;<FONT color="#cc3300">EOF</FONT>&nbsp;<FONT color="#cc3300">}</FONT>&nbsp;
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<action-stmt>">&lt;action-stmt&gt;</A>&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;&lt;CR&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<data-stmt>">&lt;data-stmt&gt;</A>&nbsp;&lt;:&gt;&nbsp;&nbsp;<EM><FONT color="#a9a9a9">/* Tr.onDataStmtAsInstruction( $$(0), $$(1) ); */</FONT></EM>
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<data-stmt>">&lt;data-stmt&gt;</A>&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;&lt;CR&gt;&nbsp;&nbsp;<EM><FONT color="#a9a9a9">/* Tr.onDataStmtAsInstruction( $$(0), $$(1) ); */</FONT></EM>
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<dim-stmt>">&lt;dim-stmt&gt;</A>&nbsp;&lt;:&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<dim-stmt>">&lt;dim-stmt&gt;</A>&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;&lt;CR&gt;&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;&lt;line-comment&gt;&nbsp;<FONT color="#cc3300">+:</FONT>&nbsp;<FONT color="#cc3300">{</FONT>&nbsp;&lt;CR&gt;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;<FONT color="#cc3300">EOF</FONT>&nbsp;<FONT color="#cc3300">}</FONT>&nbsp;
+<BR><BR><STRONG><A name="<data-stmt>">&lt;data-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;whole-data-stmt&gt;&nbsp;&nbsp;<EM><FONT color="#a9a9a9">/*Tr.onDataStmt($$(0),$$(1)); */</FONT></EM>
+<BR><BR><STRONG><A name="<dim-stmt>">&lt;dim-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIM&nbsp;<A href="#<designator-list>">&lt;designator-list&gt;</A>&nbsp;
+<BR><BR><STRONG><A name="<designator-list>">&lt;designator-list&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<designator-list>">&lt;designator-list&gt;</A>&nbsp;&lt;,&gt;&nbsp;<A href="#<designator>">&lt;designator&gt;</A>&nbsp;
+<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<designator>">&lt;designator&gt;</A>&nbsp;
 <BR><BR><STRONG><A name="<next-stmt>">&lt;next-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEXT&nbsp;<A href="#<index-list>">&lt;index-list&gt;</A>&nbsp;
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;NEXT&nbsp;
 <BR><BR><STRONG><A name="<index-list>">&lt;index-list&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<index-list>">&lt;index-list&gt;</A>&nbsp;&lt;,&gt;&nbsp;<A href="#<id>">&lt;id&gt;</A>&nbsp;
@@ -249,8 +257,6 @@
 <BR><BR><STRONG><A name="<print-function>">&lt;print-function&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TAB&nbsp;&lt;(&gt;&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;&lt;)&gt;&nbsp;
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;SPC&nbsp;&lt;(&gt;&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;&lt;)&gt;&nbsp;
 <BR><BR><STRONG><A name="<read-stmt>">&lt;read-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;READ&nbsp;<A href="#<designator-list>">&lt;designator-list&gt;</A>&nbsp;
-<BR><BR><STRONG><A name="<designator-list>">&lt;designator-list&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<designator-list>">&lt;designator-list&gt;</A>&nbsp;&lt;,&gt;&nbsp;<A href="#<designator>">&lt;designator&gt;</A>&nbsp;
-<BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<designator>">&lt;designator&gt;</A>&nbsp;
 <BR><BR><STRONG><A name="<speed-stmt>">&lt;speed-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPEED&nbsp;=&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;
 <BR><BR><STRONG><A name="<memory-stmt>">&lt;memory-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HIMEM&nbsp;&lt;:&gt;&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;LOMEM&nbsp;&lt;:&gt;&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;
@@ -271,8 +277,6 @@
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;WAIT&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;&lt;,&gt;&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;&lt;,&gt;&nbsp;<A href="#<expr>">&lt;expr&gt;</A>&nbsp;
 <BR><BR><STRONG><A name="<declaration-stmt>">&lt;declaration-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="#<data-stmt>">&lt;data-stmt&gt;</A>&nbsp;
 <BR>&nbsp;&nbsp;<FONT color="#cc3300">|</FONT>&nbsp;&nbsp;<A href="#<dim-stmt>">&lt;dim-stmt&gt;</A>&nbsp;
-<BR><BR><STRONG><A name="<data-stmt>">&lt;data-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;whole-data-stmt&gt;&nbsp;&nbsp;<EM><FONT color="#a9a9a9">/*Tr.onDataStmt($$(0),$$(1)); */</FONT></EM>
-<BR><BR><STRONG><A name="<dim-stmt>">&lt;dim-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIM&nbsp;<A href="#<designator-list>">&lt;designator-list&gt;</A>&nbsp;
 <BR><BR><STRONG><A name="<empty-stmt>">&lt;empty-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;:&gt;&nbsp;
 <BR><BR><STRONG><A name="<ok-stmt>">&lt;ok-stmt&gt;</A></STRONG><FONT color="#cc3300"> ::= </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;
 <BR><BR><STRONG><A name="<unlabeled-line-comment>">&lt;unlabeled-line-comment&gt;</A></STRONG><FONT color="#cc3300"> ::~ </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;line-comment&gt;&nbsp;&nbsp;<EM><FONT color="#a9a9a9">/* Tr.error(L"Line Comment should begin with Line Number."); */</FONT></EM>

@@ -257,8 +257,22 @@
 
 <instruction> ::= 
            <action-stmt> <:> 
-     |     <line-comment> +: { <CR> | EOF } 
      |     <action-stmt> +: <CR> 
+     |     <data-stmt> <:>   /* Tr.onDataStmtAsInstruction( $$(0), $$(1) ); */
+     |     <data-stmt> +: <CR>   /* Tr.onDataStmtAsInstruction( $$(0), $$(1) ); */
+     |     <dim-stmt> <:> 
+     |     <dim-stmt> +: <CR> 
+     |     <line-comment> +: { <CR> | EOF } 
+
+<data-stmt> ::= 
+           <whole-data-stmt>   /*Tr.onDataStmt($$(0),$$(1)); */
+
+<dim-stmt> ::= 
+           DIM <designator-list> 
+
+<designator-list> ::= 
+           <designator-list> <,> <designator> 
+     |     <designator> 
 
 <next-stmt> ::= 
            NEXT <index-list> 
@@ -410,10 +424,6 @@
 <read-stmt> ::= 
            READ <designator-list> 
 
-<designator-list> ::= 
-           <designator-list> <,> <designator> 
-     |     <designator> 
-
 <speed-stmt> ::= 
            SPEED = <expr> 
 
@@ -449,12 +459,6 @@
 <declaration-stmt> ::= 
            <data-stmt> 
      |     <dim-stmt> 
-
-<data-stmt> ::= 
-           <whole-data-stmt>   /*Tr.onDataStmt($$(0),$$(1)); */
-
-<dim-stmt> ::= 
-           DIM <designator-list> 
 
 <empty-stmt> ::= 
            <:> 
