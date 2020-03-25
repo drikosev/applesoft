@@ -1,9 +1,17 @@
 
-Mar 25, 2020
+  Mar 25, 2020
+
 
 
    I About AppleSoft
   II Files
+     1. Preprocessor
+     2. Keywords
+     3. Scanner
+     4. Parser
+     5. Data Scanner
+     6. Data Parser
+     7. The command "bcheck"
  III External Links
   
 
@@ -88,7 +96,19 @@ a single scanner by following our model solution that consists of three distinct
     4.2) The "AppleSoft_Parser.htm" has the same content as the above in HTML format.
 
 
- 5) The Data Parser
+
+ 5) Data Scanner
+    ------------
+    -It tokenizes scanned Data statements. It's called by the Data Parser. Few spaces are
+     checked by Semantic Actions. A returned real-literal-constant ie can be a literal, 
+     not vice versa. Depending on the dialect, a lower 'e' or space may not be acceptable
+     in a real number, in which case a READ statement would accept it only as a string. 
+     5.1) The "Data_Scanner.txt" contains the lexical rules used in Data statements. 
+     5.2) The "Data_Scanner.htm" has the same content as the above in HTML format.
+
+
+
+ 6) The Data Parser
     ---------------
     -It parses tokenized Data statements. It's an embedded parser currently called by the
     AppleSoft Parser to process scanned Data statements. The following two lines show ie
@@ -98,18 +118,9 @@ a single scanner by following our model solution that consists of three distinct
            <whole-data-stmt>   /*Tr.onDataStmt($$(0),$$(1)); */
 
  
-    5.1) The "Data_parser.txt" contains the syntax rules used in Data statements.
-    5.2) The "Data_parser.htm" has the same content as the above in HTML format.
+    6.1) The "Data_parser.txt" contains the syntax rules used in Data statements.
+    6.2) The "Data_parser.htm" has the same content as the above in HTML format.
 
-
- 6) Data Scanner
-    ------------
-    -It tokenizes scanned Data statements. It's called by the Data Parser. Few spaces are
-     checked by Semantic Actions. A returned real-literal-constant ie can be a literal, 
-     not vice versa. Depending on the dialect, a lower 'e' or space may not be acceptable
-     in a real number, in which case a READ statement would accept it only as a string. 
-     6.1) The "Data_Scanner.txt" contains the lexical rules used in Data statements. 
-     6.2) The "Data_Scanner.htm" has the same content as the above in HTML format.
 
 
 
