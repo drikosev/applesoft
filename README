@@ -4,15 +4,16 @@
 
 
    I About AppleSoft
-  II Files
+  II BNF Grammars
      1. Preprocessor
      2. Keywords
      3. Scanner
      4. Parser
      5. Data Scanner
      6. Data Parser
+ III Downloads
      7. The command "bcheck"
- III External Links
+  IV External Links
   
 
 
@@ -55,8 +56,8 @@ a single scanner by following our model solution that consists of 3+1 distinct p
 
 
 
- II Files
- --------
+ II BNF Grammars
+ ---------------
 
  1) The AppleSoft Preprocessor
     --------------------------
@@ -123,9 +124,11 @@ a single scanner by following our model solution that consists of 3+1 distinct p
 
 
 
+ III Downloads
+ -------------
 
- 7) The command bcheck
-    ------------------
+    7) The command bcheck
+    ---------------------
 
     The command "bcheck" (binary) is an AppleSoft parser (front-end) that validates
     syntactically a Basic program according to the BNF rules of the AppleSoft_Parser.txt.
@@ -143,8 +146,8 @@ a single scanner by following our model solution that consists of 3+1 distinct p
 
 
 
- III External Links
- ------------------
+ IV External Links
+ -----------------
  [1] http://www.classiccmp.org/cini/pdf/Apple/
      A survived AppleSoft manual (programming reference) that describes
      in some detail the syntax of the language. 
