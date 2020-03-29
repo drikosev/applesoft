@@ -77,6 +77,21 @@
 
               Parsed with Errors: if-dim.basic
 
+ [2020-03-29] The Keyword REM (replaces <line-comment>) shouldn't be proposed to the user in the                   (done)
+              following case once the rule "<unlabeled-line-comment>" is an error production: 
+
+              $ cat exmark.basic && bcheck exmark.basic
+              ! Y=1
+              1 X=1
+              2 END
+
+              exmark.basic:1: error: syntax:Unexpected: '!'. Expected :":", "REM", or "linenum".  
+
+              Parsed with Errors: exmark.basic
+
+        Note: This problem is solved fairly simple, but sometime we've to rewrite the routine that                 (todo)
+              returns the tokens originating from error productions. 
+
 
 
  Data Scanner 
