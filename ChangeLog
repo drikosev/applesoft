@@ -77,7 +77,7 @@
 
               Parsed with Errors: if-dim.basic
 
- [2020-03-29] The Keyword REM (replaces <line-comment>) shouldn't be proposed to the user in the                   (done)
+ [2020-03-29] The Keyword REM (replaces <line-comment>) shouldn't be proposed to the user in the                   (todo)
               following case once the rule "<unlabeled-line-comment>" is an error production: 
 
               $ cat exmark.basic && bcheck exmark.basic
@@ -89,7 +89,7 @@
 
               Parsed with Errors: exmark.basic
 
-        Note: This problem is solved fairly simple, but sometime we've to rewrite the routine that                 (todo)
+        Note: This problem is solved fairly simple, but sometime we've to rewrite the routine that                  
               returns the tokens originating from error productions. 
 
 
