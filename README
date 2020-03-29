@@ -36,8 +36,8 @@ approximative, in contrast to my Fortran grammar on GitHub which is more accurat
 could find several Fortran programs coded in fixed form. Feedback is welcome!    
 
  Since Basic allows the use of identifiers before keywords, a program originally coded as
-space optional may be interpreted quite different by a modern tool that accepts only space
-separated keywords and names, if names just can't start with keywords but may contain one. 
+space optional may be interpreted quite different by a modern tool that treats spaces as
+significant, if names just can't start with keywords but may contain one. 
 
  Being careful about the above issue, I could run few modern math formulas found at [*2]
 and [*3] in the Compukit UK101 simulator by just commenting any HOME and TEXT statements.
