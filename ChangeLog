@@ -91,6 +91,18 @@
 
         Note: This problem is solved fairly simple, but sometime we've to rewrite the routine that                  
               returns the tokens originating from error productions. 
+ [2020-03-30] The AppleSoft Simulator rejects but the Compukit UK101 accepts this program:                         (todo)
+
+              $ cat unlabeled-line-comment.basic && bcheck unlabeled-line-comment.basic    
+              010 X=1
+              011 REM Labeled Line Comment
+              REM   Unlabeled Line Comment
+              099 END
+
+              unlabeled-line-comment.basic:3: error: semantic:Line Comment should begin with Line Number.
+
+              Parsed with Errors: unlabeled-line-comment.basic
+
 
 
 
