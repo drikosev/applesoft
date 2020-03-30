@@ -76,6 +76,7 @@
               "TEXT", "WAIT", "linenum", or "name". 
 
               Parsed with Errors: if-dim.basic
+        Note: [30/3] We'll also issue just a warning on DATA declarations in IF statements (UK101).
 
  [2020-03-29] The Keyword REM (replaces <line-comment>) shouldn't be proposed to the user in the                   (todo)
               following case once the rule "<unlabeled-line-comment>" is an error production: 
@@ -90,7 +91,9 @@
               Parsed with Errors: exmark.basic
 
         Note: This problem is solved fairly simple, but sometime we've to rewrite the routine that                  
-              returns the tokens originating from error productions. 
+              returns the tokens originating from error productions.
+        Note: [30/3] We'll accept a line comment without a label, as the Compukit UK101 does.
+ 
  [2020-03-30] The AppleSoft Simulator rejects but the Compukit UK101 accepts this program:                         (todo)
 
               $ cat unlabeled-line-comment.basic && bcheck unlabeled-line-comment.basic    
@@ -103,6 +106,7 @@
 
               Parsed with Errors: unlabeled-line-comment.basic
 
+        Note: [30/3] We'll accept a line comment without a label, as the Compukit UK101 does.
 
 
 
