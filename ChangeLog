@@ -2,7 +2,7 @@
 
  AppleSoft Preprocessor
  ---------------------
- [2020-03-21] Smart quotes are exported unreadable in file "AppleSoft_Preprocessor.txt", which                      (done)
+ [2020-03-21] Smart quotes are exported unreadable in file "AppleSoft_Preprocessor.txt", which         (done)
               is a bug in Syntaxis. Hope, I can export & reimport the file with the new rule:
               <smart-char>::= \u201C | \u2019 | \u2013
               
@@ -10,40 +10,40 @@
 
  AppleSoft Scanner 
  -----------------
- [2020-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                                (done)
+ [2020-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                    (done)
 
 
 
  AppleSoft Scanner Free 
  ----------------------
- [2020-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                                (done)
+ [2020-03-22] Undefined "<->" (201) symbol, used in LIST statements.                                    (done)
 
 
 
  AppleSoft Parser 
  -----------------
- [2020-03-22] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only "LIST a - b".                 (done)
+ [2020-03-22] The comma in stmt "LIST 1,2" isn't supported by the UK101 dialect, only "LIST a - b".     (done)
         Note: A Sem. action will make the validation.
- [2020-03-23] Likely, an <if-stmt> should match all the following instructions in the same line:                    (done)
+ [2020-03-23] Likely, an <if-stmt> should match all the following instructions in the same line:        (done)
               $ cat print-stack.basic
               1 IF X THEN 2: PRINT "This is matched in <stmts>"
               2 END
 
- [2020-03-24] Issue a warning if a label (linenum) is redefined.                                                    (done)
- [2020-03-24] Likely, the power operator is left associative. Yet, this grammar assumes it's right                  (done)
+ [2020-03-24] Issue a warning if a label (linenum) is redefined.                                        (done)
+ [2020-03-24] Likely, the power operator is left associative. Yet, this grammar assumes it's right      (done)
               and I've to remove the Follow Restriction "-: { <power-op> }" from power expressions. 
               $ cat print-1.basic
               1 PRINT  "128=", 2 * 2 ^ 2 ^ 3
               2 END
 
- [2020-03-24] The grammar doesn't allow lines containing only a label (linenum).                                    (done)
+ [2020-03-24] The grammar doesn't allow lines containing only a label (linenum).                        (done)
               $ cat empty-lines-3.txt
               010 
               020 END
 
         Note: The proposed token in error messages however for CR (Carriage Return) will be the ':'.
 
- [2020-03-25] The Compukit UK101 accepts this program but couldn't READ N.                                          (done)
+ [2020-03-25] The Compukit UK101 accepts this program but couldn't READ N.                              (done)
               $ cat if-data.basic && bcheck if-data.basic
               010 X=1
               020 IF X > 0 THEN DATA 1
@@ -61,7 +61,7 @@
 
         Note: The AppleSoft Simulator fails to parse the second line.
 
- [2020-03-25] Both the Compukit UK101 and the AppleSoft Simulator accept this program.                              (done)
+ [2020-03-25] Both the Compukit UK101 and the AppleSoft Simulator accept this program.                 (done)
               $ cat if-dim.basic && bcheck if-dim.basic
               010 X=-1
               020 IF X > 0 THEN DIM A(1)
@@ -78,7 +78,7 @@
               Parsed with Errors: if-dim.basic
         Note: [30/3] We'll also issue just a warning on DATA declarations in IF statements (UK101).
 
- [2020-03-29] The Keyword REM (replaces <line-comment>) shouldn't be proposed to the user in the                   (todo)
+ [2020-03-29] The Keyword REM (replaces <line-comment>) shouldn't be proposed to the user in the       (done)
               following case once the rule "<unlabeled-line-comment>" is an error production: 
 
               $ cat exmark.basic && bcheck exmark.basic
@@ -93,8 +93,8 @@
         Note: This problem is solved fairly simple, but sometime we've to rewrite the routine that                  
               returns the tokens originating from error productions.
         Note: [30/3] We'll accept a line comment without a label, as the Compukit UK101 does.
- 
- [2020-03-30] The AppleSoft Simulator rejects but the Compukit UK101 accepts this program:                         (todo)
+        Note: [01/4] Thus this change may not be easily observable.
+ [2020-03-30] The AppleSoft Simulator rejects but the Compukit UK101 accepts this program:             (done)
 
               $ cat unlabeled-line-comment.basic && bcheck unlabeled-line-comment.basic    
               010 X=1
@@ -112,13 +112,14 @@
 
  Data Scanner 
  ------------
- [2020-03-22] A Sem. action must check if a dialect accepts lower case letters in the DATA keyword.                 (done)
+ [2020-03-22] A Sem. action must check if a dialect accepts lower case letters in the DATA keyword.     (done)
 
 
 
  Main Program
  ------------
- [2020-03-24] We could delete AppleSoft specific keywords from error messages for the UK101 dialect.                (done)
+ [2020-03-24] We could delete AppleSoft specific keywords from error messages for the UK101 dialect.    (done)
         Note: This will work for error messages containing the term 'Expected' followed by a ':'.
         Note: So, we propose to the user keywords per dialect in error messages.
-        Note: [25/3] Extra comma as we see ie with the error message for program "if-dim.basic".                    (done)
+        Note: [25/3] Extra comma as we see ie with the error message for program "if-dim.basic".        (done)
+
